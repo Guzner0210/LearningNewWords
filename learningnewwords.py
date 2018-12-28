@@ -32,7 +32,7 @@ def new_word():
                     VALUES(?,?)''', (create_new_word, its_meaning))
         db.commit()
         db.close()
-        oo = input("Do you want to insert more words? [Y/n] ").lower()
+        oo = input("Do you want to insert more words? [Y/n] ").lower().strip()
         if oo == "y" or oo == "yes":
             continue
         else:
