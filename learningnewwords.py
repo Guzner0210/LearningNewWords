@@ -1,5 +1,10 @@
+# As a user, I should be able to create an account and log into my account
+# As a user, I should be able to learn new words by giving the new words their meanings and save them to the database
+# As a user, I should be able to take tests on the words that I saved to the database
+
 import sqlite3
 import random
+
 
 def main():
     print("You have 2 options: \n")
@@ -14,7 +19,9 @@ def main():
     else:
         print("Sorry, I don't understand what you want.")
 
+
 def new_word():
+    print("\n")
     switch = True
 
     while(switch):
@@ -38,9 +45,10 @@ def new_word():
             continue
         else:
             switch = False
-            print("Goodbye")
+
 
 def take_a_quiz():
+    print("\n")
     score = 0
     number_of_question = 0
     switc = True
@@ -53,15 +61,18 @@ def take_a_quiz():
             print("That's correct!")
         else:
             number_of_question += 1
-            print("Sorry, you're wrong!")
+            print("Sorry, you're wrong! The correct answer is: " + the_answer_is)
 
         iii = input("Do you want to keep continue? [Y/n] ").lower().strip()
+        print("\n")
         if iii == "y" or iii == "yes":
             continue
         else:
             break
 
-    print("Your score is: " + str((score/number_of_question)*100) +"%")
+    print("The number of right answers is: " + str(score))
+    print("The number of wrong answers is : " + str(number_of_question - score))
+    print("Your score is: " + str((score/number_of_question)*100) +" %")
 
 
 def spawn_a_question():
@@ -79,7 +90,7 @@ def spawn_a_question():
     a_rando = random.randint(0, len(all_meanings) - 1)
     global the_answer_is
     the_answer_is = all_words[a_rando]
-    print(all_meanings[a_rando])
+    print("--> " + all_meanings[a_rando])
 
 
 if __name__ == "__main__":
